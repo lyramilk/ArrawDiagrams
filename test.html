@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script type="text/javascript" charset="utf-8" src="ArrawDiagrams.js"></script>
+	</head>
+	<body>eee<br/>
+		aaa<canvas id="myc" width="500" height="500" style="border:1px dashed #8A2BE2;padding:0px"></canvas>
+	</body>
+	<script>
+		let g = new ArrawDiagrams("myc",true);
+		g.node({id:"id1",label:"服务1",y:50});
+		g.node({id:"id2",label:"主数据库",y:250});
+		g.node({id:"id3",label:"从库1",y:250});
+		g.node({id:"id4",label:"从库2",y:250});
+		g.node({id:"id5",label:"从库3",y:250});
+		g.arraw({from:"id1",to:"id2"});
+		g.arraw({from:"id2",to:"id3"});
+		g.arraw({from:"id2",to:"id4"});
+		g.arraw({from:"id2",to:"id5"});
+		g.update();
+
+		g.AddLine.push(function(from,to){
+			alert("创建依赖关系，从" + from.label + "到" + to.label);
+		});
+
+		g.RemoveLine.push(function(from,to){
+			alert("删除依赖关系，从" + from.label + "到" + to.label);
+		});
+
+	</script>
+</html>
